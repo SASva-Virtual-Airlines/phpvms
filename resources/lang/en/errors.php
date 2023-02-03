@@ -15,4 +15,8 @@ return [
         'title'   => 'Internal Error',
         'message' => 'An Error Occured',
     ],
+    'maintenance' => [
+        'title' => 'Sorry, we’re down for maintenance..',
+        'message' => '..but we’ll be back shortly!'
+    ],
 ];

@@ -17,6 +17,7 @@ return [
     'timezone'       => 'Timezone',
     'country'        => 'Country',
     'download'       => 'Download|Downloads',
+    'notams'         => 'Notams|Company Notams',
     'from'           => 'from',
     'to'             => 'to',
     'state'          => 'State',

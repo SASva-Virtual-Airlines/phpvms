@@ -153,6 +153,7 @@ class RouteServiceProvider extends ServiceProvider
                 'as'        => 'frontend.',
             ], function () {
                 Route::get('/', 'HomeController@index')->name('home');
+                Route::get('/privacy', 'HomeController@privacy')->name('privacy');
                 Route::get('r/{id}', 'PirepController@show')->name('pirep.show.public');
                 Route::get('pireps/{id}', 'PirepController@show')->name('pireps.show');
 

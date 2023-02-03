@@ -4,15 +4,15 @@ current:
   major: 7
   minor: 0
   patch: 0
-  prerelease: 'dev'
+  prerelease: dev
   buildmetadata: ''
-  commit: ''
+  commit: 220830.f30a3b
   git_absorb: git-local
   format: '{$major}.{$minor}.{$patch}'
 build:
   mode: number
   length: 6
-  number:
+  number: 220830.f30a3b
   git_absorb: git-local
 git:
   git-local: 'git rev-parse --verify HEAD'

@@ -211,7 +211,8 @@ class FlightService extends Service
                 && $flight->route_leg === $value->route_leg;
         });
 
-        return !($found_flights->count() === 0);
+        // return !($found_flights->count() === 0);
+        return $found_flights;
     }
 
     /**

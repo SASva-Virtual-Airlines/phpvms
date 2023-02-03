@@ -227,11 +227,23 @@ class PirepController extends Controller
         }
 
         $map_features = $this->geoSvc->pirepGeoJson($pirep);
+        
+        $badge = [
+            'info',
+            'warning',
+            'success',
+            'warning',
+            'danger',
+            'info',
+            'danger',
+            'info'
+        ];
 
         return view('pireps.show', [
             'pirep'        => $pirep,
             'map_features' => $map_features,
             'user'         => Auth::user(),
+            'badge'        => $badge
         ]);
     }
 

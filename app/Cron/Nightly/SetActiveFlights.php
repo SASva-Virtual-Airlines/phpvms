@@ -33,53 +33,53 @@ class SetActiveFlights extends Listener
      */
     public function checkFlights(): void
     {
-        $today = Carbon::now('UTC');
-        $flights = Flight::all();
+        // $today = Carbon::now('UTC');
+        // $flights = Flight::all();
 
-        /**
-         * @var Flight $flight
-         */
-        foreach ($flights as $flight) {
-            if (!$flight->active) {
-                continue;
-            }
+        // /**
+        //  * @var Flight $flight
+        //  */
+        // foreach ($flights as $flight) {
+        //     if (!$flight->active) {
+        //         continue;
+        //     }
 
-            // Set to visible by default
-            $flight->visible = true;
+        //     // Set to visible by default
+        //     $flight->visible = true;
 
-            // dates aren't set, so just save if there were any changes above
-            // and move onto the next one
-            if ($flight->start_date === null || $flight->end_date === null) {
-                if ($flight->days !== null && $flight->days > 0) {
-                    $flight->visible = Days::isToday($flight->days);
-                    if (!$flight->visible) {
-                        Log::info('Today='.date('N').', start=no, mask='.$flight->days.', in='
-                            .Days::in($flight->days, Days::$isoDayMap[(int) date('N')]));
-                    }
-                }
+        //     // dates aren't set, so just save if there were any changes above
+        //     // and move onto the next one
+        //     if ($flight->start_date === null || $flight->end_date === null) {
+        //         if ($flight->days !== null && $flight->days > 0) {
+        //             $flight->visible = Days::isToday($flight->days);
+        //             if (!$flight->visible) {
+        //                 Log::info('Today='.date('N').', start=no, mask='.$flight->days.', in='
+        //                     .Days::in($flight->days, Days::$isoDayMap[(int) date('N')]));
+        //             }
+        //         }
 
-                $flight->save();
-                continue;
-            }
+        //         $flight->save();
+        //         continue;
+        //     }
 
-            // Check the day of week now first
+        //     // Check the day of week now first
 
-            // Start/end date is set, so make sure today is valid for it to be alive
-            // and then make sure if days of the week are specified, check that too
-            if ($today->gte($flight->start_date) && $today->lte($flight->end_date)) {
-                if ($flight->days !== null && $flight->days > 0) {
-                    $flight->visible = Days::isToday($flight->days);
-                    if (!$flight->visible) {
-                        Log::info('Today='.date('N').', start=no, mask='.$flight->days.', in='
-                                .Days::in($flight->days, Days::$isoDayMap[(int) date('N')]));
-                    }
-                }
-            } else {
-                $flight->visible = false;
-                Log::info('Toggling flight '.$flight->ident.' to hidden, outside of start/end boundary');
-            }
+        //     // Start/end date is set, so make sure today is valid for it to be alive
+        //     // and then make sure if days of the week are specified, check that too
+        //     if ($today->gte($flight->start_date) && $today->lte($flight->end_date)) {
+        //         if ($flight->days !== null && $flight->days > 0) {
+        //             $flight->visible = Days::isToday($flight->days);
+        //             if (!$flight->visible) {
+        //                 Log::info('Today='.date('N').', start=no, mask='.$flight->days.', in='
+        //                         .Days::in($flight->days, Days::$isoDayMap[(int) date('N')]));
+        //             }
+        //         }
+        //     } else {
+        //         $flight->visible = false;
+        //         Log::info('Toggling flight '.$flight->ident.' to hidden, outside of start/end boundary');
+        //     }
 
-            $flight->save();
-        }
+        //     $flight->save();
+        // }
     }
 }

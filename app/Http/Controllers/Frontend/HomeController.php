@@ -35,4 +35,9 @@ class HomeController extends Controller
             'users' => $users,
         ]);
     }
+    
+    public function privacy()
+    {
+        return view('privacy');
+    }
 }
